@@ -1,1 +1,13 @@
-nav
+<nav>
+    <a href="/">Homepage</a>
+
+    <div>
+        {% if user.is_authenticated %}
+            <span>username: <a href="/profile">{{ user }}</a></span>
+            <a href="/logout/">Logout</a>
+        {% else %}
+            <a href="/registration/">Register</a>
+            <a href="/login/">Login</a>
+        {% endif %}
+    </div>
+</nav>

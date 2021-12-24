@@ -7,6 +7,8 @@ from django.contrib.auth.models import User
 from .models import UserProfile
 from django.contrib.auth import logout, login, authenticate
 from django.contrib.auth.decorators import login_required
+from django.db.models import Count
+from chat.models import ChatModel
 
 def register_view(request):
     form = RegisterForm(request.POST or None)
@@ -41,5 +43,6 @@ def logout_view(request):
 @login_required(login_url='/login/')
 def profile_view(request):
     user = request.user
-    return render(request, 'accounts/profile.html', {'profile': user})
+    messages = ChatModel.objects.filter(user=user)
+    return render(request, 'accounts/profile.html', {'profile': user, 'messages': messages})
     

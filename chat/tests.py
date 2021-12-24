@@ -51,8 +51,8 @@ class ChatTest(TestCase):
         get_request = self.client.get('')
         auth_account = 'profile' in str(get_request.content)
         auth_logout = 'logout' in str(get_request.content)
-        self.assertEqual(auth_account, True, msg='Отстутствует ссылка на профиль для авторизированного пользователя внутри навигационной панели. Используйте имя - profile')
-        self.assertEqual(auth_logout, True, msg='Отстутствует ссылка на логаут для авторизированного пользователя внутри навигационной панели. Используйте имя - logout')
+        self.assertEqual(auth_account, True, msg='Отсутствует ссылка на профиль для авторизированного пользователя внутри навигационной панели. Используйте имя - profile')
+        self.assertEqual(auth_logout, True, msg='Отсутствует ссылка на логаут для авторизированного пользователя внутри навигационной панели. Используйте имя - logout')
         print('Тестирование модуля chat - Проверка шаблонов [x]')
 
     def test_2(self):
